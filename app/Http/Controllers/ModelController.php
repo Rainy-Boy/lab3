@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Carmodel;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ModelController extends Controller
 {
@@ -31,9 +32,17 @@ class ModelController extends Controller
     {
         // dd($request);
 
+        $validator = $request->validate([
+            'model_name' => ['required', Rule::unique('carmodels', 'name')],
+            'production_started' => 'numeric|min:1900|max:2023',
+            'min_price' => 'numeric|min:0.01'
+        ]);
+
         $model = new Carmodel();
         $model->name = $request->model_name;
         $model->manufacturer_id = $request->manufacturer_id;
+        $model->production_started = $request->production_started;
+        $model->min_price = $request->min_price;
         $model->save();
         $manufacturer = Manufacturer::findOrFail($request->manufacturer_id);
         $action = action([ManufacturerController::class, 'show'], ['id' =>

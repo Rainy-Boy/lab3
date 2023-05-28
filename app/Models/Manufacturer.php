@@ -9,7 +9,7 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'founded', 'website', 'country_id'];
     public function country() {
         return $this->belongsTo(Country::class);
     }

@@ -14,8 +14,20 @@
         @csrf
         @method('put')
         <label for='manufacturer_name'>Manufacturer name</label>
-        <input type="text" name="manufacturer_name" id="manufacturer_name" value="{{
-        $manufacturer->name }}">
+        <input type="text" name="manufacturer_name" id="manufacturer_name" value="{{$manufacturer->name}}">
+        @error('manufacturer_name')
+            <p>{{$message}}</p>
+        @enderror
+        <label for="founded">Founded</label>
+        <input type="text" name="founded" id="founded" value="{{$manufacturer->founded}}">
+        @error('founded')
+            <p>{{$message}}</p>
+        @enderror
+        <label for="website">Website</label>
+        <input type="text" name="website" id="website" value="{{$manufacturer->website}}">
+        @error('website')
+            <p>{{$message}}</p>
+        @enderror
         <button type="submit" value="Update">Save changes</button>
     </form>
 </body>

@@ -16,7 +16,9 @@
         <li>
             <a href="{{
                 action([App\Http\Controllers\ManufacturerController::class, 'show'],['id'
-                => $manufacturer->id])}}">{{ $manufacturer->name }}</a>
+                => $manufacturer->id])}}">{{ $manufacturer->name }}</a>,
+            <br>Founded: {{$manufacturer->founded}},
+            <br>Website: <a href="{{$manufacturer->website}}">{{$manufacturer->website}}
             <form method="POST"
             action={{
             action([App\Http\Controllers\ManufacturerController::class, 'destroy'], $manufacturer->id) }}>

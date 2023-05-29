@@ -57,7 +57,8 @@ class ManufacturerController extends Controller
     public function show(string $id) {
         $manufacturer = Manufacturer::findOrFail($id);
         $carmodels = $manufacturer->carmodels()->get();
-        return view('models', ['carmodels' => $carmodels, 'manufacturer_name' => $manufacturer->name]);
+        return view('models', ['carmodels' => $carmodels, 'manufacturer_name' => $manufacturer->name, 
+                    'id' => $manufacturer->id]);
     }
 
     /**

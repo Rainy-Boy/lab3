@@ -12,14 +12,15 @@
         <p color='red'> There are no records in the database!</p>
     @else
     <ul>
-            @foreach ($carmodels as $carmodel)
+        @foreach ($carmodels as $carmodel)
         <li>
-            {{ $carmodel->name }}
+            {{ $carmodel->name }} <br>Production started: {{ $carmodel->production_started }}
+            <br>Min price: {{ $carmodel->min_price }}
         </li>
         @endforeach
     </ul>
-    <a href="{{action([App\Http\Controllers\ModelController::class,
-        'create'],['id' => $carmodel->manufacturer_id])}}">Add new model</a>
     @endif
+    <a href="{{action([App\Http\Controllers\ModelController::class,
+        'create'],['id' => $id])}}">Add new model</a>
 </body>
 </html>
